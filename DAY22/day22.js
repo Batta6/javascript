@@ -16,5 +16,4 @@ let person = {
 }; 
 
 document.getElementById("hi").innerHTML =names;
-document.getElementsByClassName("hello").innerHTML=names(0);
 console.log(person); 
