@@ -1,0 +1,24 @@
+.flex-container {
+    display: flex; /* Enables flexbox layout for children */
+    flex-wrap: wrap; /* Allows items to wrap to the next line */
+    justify-content: space-between; /* Distributes space evenly between items on the main axis */
+    align-items: center; /* Aligns items along the cross axis */
+    width: 400px;
+    border: 2px solid black;
+    padding: 10px;
+    background-color: white;
+}
+
+.flex-item {
+    width: 120px; /* Example width for items */
+    height: 80px; /* Example height for items */
+    margin: 5px; /* Space around each item */
+}
+
+/* Color classes for visual representation */
+.red { background-color: #ff0000; }
+.purple { background-color: #800080; }
+.yellow { background-color: #ffff00; }
+.green { background-color: #008000; }
+.orange { background-color: #ffa500; }
+.blue { background-color: #0000ff; }
