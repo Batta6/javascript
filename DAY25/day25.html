@@ -7,30 +7,35 @@
   </head>
   <body>
     <script>
-      let grade;
-      let marks = prompt("Enter your marks:");
-
-      switch (true) {
-        case marks >= 90 && marks <= 100:
-          grade = "A+";
-          break;
-        case marks >= 75 && marks <= 89:
-          grade = "A";
-          break;
-        case marks >= 60 && marks <= 74:
-          grade = "B";
-          break;
-        case marks >= 45 && marks <= 59:
-          grade = "C";
-          break;
-        case marks < 45 && marks >= 0:
-          grade = "Fail";
-          break;
-        default:
-          grade = "Invalid marks";
+      //sum of numbers from 1 to 20
+      let number = 20;
+      let i = 1;
+      let sum = 0;
+      while (i <= number) {
+        sum += i; //sum=sum+i
+        console.log(sum);
+        i++;
       }
+      console.log("sum of natural numbers from 1 to 20:" + sum);
 
-      console.log("Your grade is:" + grade);
+      //reverse countdown from 10 to 1
+
+      for (j = 10; j >= 1; j--) {
+        console.log("COUNT DOWN:" + j);
+      }
+      //sum of even numbers from 1 to 50
+      let num = 50;
+      let k = 1;
+      sum = 0;
+      while (k <= num) {
+        if (k % 2 == 0) {
+          sum = sum + k;
+          console.log(k);
+        }
+        k++;
+        console.log("count" + sum);
+      }
+      console.log("sum of even numbers from 1 to 50 is:" + sum);
     </script>
   </body>
 </html>

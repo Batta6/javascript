@@ -57,7 +57,7 @@ else{
 
 let a=12;
 let b=12;
-let c=15;
+let c=12;
 if(a>b && a>c){
     console.log("here is A is the largest number:"+a);
 }
