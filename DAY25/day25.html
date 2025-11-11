@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let grade;
+      let marks = prompt("Enter your marks:");
+
+      switch (true) {
+        case marks >= 90 && marks <= 100:
+          grade = "A+";
+          break;
+        case marks >= 75 && marks <= 89:
+          grade = "A";
+          break;
+        case marks >= 60 && marks <= 74:
+          grade = "B";
+          break;
+        case marks >= 45 && marks <= 59:
+          grade = "C";
+          break;
+        case marks < 45 && marks >= 0:
+          grade = "Fail";
+          break;
+        default:
+          grade = "Invalid marks";
+      }
+
+      console.log("Your grade is:" + grade);
+    </script>
+  </body>
+</html>

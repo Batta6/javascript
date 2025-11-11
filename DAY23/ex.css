@@ -1,24 +1,45 @@
-.flex-container {
-    display: flex; /* Enables flexbox layout for children */
-    flex-wrap: wrap; /* Allows items to wrap to the next line */
-    justify-content: space-between; /* Distributes space evenly between items on the main axis */
-    align-items: center; /* Aligns items along the cross axis */
-    width: 400px;
-    border: 2px solid black;
-    padding: 10px;
-    background-color: white;
+.usingflex {
+  display: flex;  
+  flex-flow: row wrap;
 }
 
-.flex-item {
-    width: 120px; /* Example width for items */
-    height: 80px; /* Example height for items */
-    margin: 5px; /* Space around each item */
+.usingflex > * {
+  padding: 10px;
+  flex: 2 100%;
 }
 
-/* Color classes for visual representation */
-.red { background-color: #ff0000; }
-.purple { background-color: #800080; }
-.yellow { background-color: #ffff00; }
-.green { background-color: #008000; }
-.orange { background-color: #ffa500; }
-.blue { background-color: #0000ff; }
+.box1 {
+  background: tomato;
+  order: 1;
+  flex: 2 0px;
+}
+
+.box2 {
+  background: lightgreen;
+  order: 2;
+  flex: 2 0px;
+}
+
+.box3 {
+  text-align: left;
+  background: deepskyblue;
+   order: 3;
+}
+
+.box4 {
+  background: gold;
+  order: 1;
+}
+
+.box5 {
+  background: hotpink;
+  order: 3;
+}
+.box6{
+    background:red ;
+    order:5;
+}
+
+body {
+  padding: 200px; 
+}

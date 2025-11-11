@@ -44,8 +44,12 @@ else if(marks>=60 && marks<=74){
 else if(marks>=45 && marks<=59){
     console.log("the person got C:"+marks)
 }
+else if(marks<45 && marks>=0){
+    console.log("You are fail:"+marks)
+}
+
 else{
-    console.log("the person failed:"+marks)
+    console.log("invalid marks:"+marks)
 }
 
 
@@ -69,7 +73,7 @@ else{
 
 //check given year is a leap year or not
 
-let year=2022;
+let year=2025;
 if((year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)){
     console.log("givenn year is a leap year:"+year)
 }
