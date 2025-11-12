@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Right angled triangle by using "*"
+      let n = 7;
+      for (let i = 1; i <= n; i++) {
+        let pattern = "";
+        for (let j = 1; j <= n - i; j++) {
+          pattern += "    ";
+        }
+        for (let k = 1; k <= i; k++) {
+          pattern += "*   ";
+        }
+        console.log(pattern);
+      }
+      //right angled triangle by inverting
+      //    let n=7;
+      //   for (let i = n; i >= 1; i--) {
+      //     let pattern = "";
+      //      for(let j = 1; j <=n-i; j++){
+      //         pattern+="  ";
+      //     }
+      //     for (let k = 1; k <= i; k++) {
+      //       pattern += "* ";
+      //     }
+      //     console.log(pattern);
+      //   }
+      let nu = 8;
+      for (let m = 1; m <= nu; m++) {
+        let pat = "";
+        for (let o = 1; o <= nu - m; o++) {
+          pat += "  ";
+        }
+        for (let p = 1; p <= 2 * m - 1; p++) {
+          pat += "* ";
+        }
+        console.log(pat);
+      }
+      //Display all Products
+      // colors = ["red", "green", "blue"];
+      // sizes = ["S", "M", "L"];
+      // O/p : Red -S. Red – M, Red – L, Green-S…….
+      let colors = ["red", "green", "blue"];
+      let sizes = ["S", "M", "L"];
+      for(let color of colors){
+       for(let size of sizes){
+         console.log(`${color}-${size}`)
+       }
+      }
+
+    </script>
+  </body>
+</html>
