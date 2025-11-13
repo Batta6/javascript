@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //All Arithmetic operation using functions
+      function add(a, b) {
+        return a + b;
+      }
+      function sub(a, b) {
+        return a - b;
+      }
+      function multiply(a, b) {
+        return a * b;
+      }
+      function division(a, b) {
+        return a / b;
+      }
+      function modulus(a, b) {
+        return a % b;
+      }
+      let a = 100;
+      let b = 50;
+      console.log("Addition=", add(a, b));
+      console.log("subtraction=", sub(a, b));
+      console.log("Multiplication=", multiply(a, b));
+      console.log("Division=", division(a, b));
+      console.log("Modulus=", modulus(a, b));
+      //Calculate total cart value
+      //Hint: parameter we need to pass array [199, 299, 499]
+      //Discount (Ex:10%)
+      let arr = [1999, 2999, 4999];
+      let total = 0;
+      for (let i = 0; i < arr.length; i++) {
+        total += arr[i];
+      }
+      console.log("total amount", total);
+      // here let discount percentage is 20%
+      let discount = (total / 100) * 20;
+      console.log("discount amount", discount);
+      let payableamount = total - discount;
+      console.log("payable amount", payableamount);
+
+      //Convert Celsius – Fahrenheit
+
+      function temp(Celsius) {
+        return  (9 / 5) * Celsius + 32;
+      }
+      let Celsius=36;
+      console.log("fahrenheit=",temp(Celsius));
+    </script>
+  </body>
+</html>

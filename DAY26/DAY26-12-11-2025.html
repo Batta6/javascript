@@ -11,9 +11,9 @@
       let n = 7;
       for (let i = 1; i <= n; i++) {
         let pattern = "";
-        for (let j = 1; j <= n - i; j++) {
-          pattern += "    ";
-        }
+        // for (let j = 1; j <= n - i; j++) {
+        //   pattern += "    ";
+        // }
         for (let k = 1; k <= i; k++) {
           pattern += "*   ";
         }
@@ -51,7 +51,7 @@
       for(let color of colors){
        for(let size of sizes){
          console.log(`${color}-${size}`)
-       }
+       } //console.log(`${color}-${sizes[0]}, ${sizes[1]} ,${sizes[2]}`)
       }
 
     </script>
