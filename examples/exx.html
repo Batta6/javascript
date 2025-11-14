@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //nested if
+      //Check if a person is eligible to vote and also check if they have voter ID.
+      let age = 22;
+      let voterId = true;
+      if (age >= 18) {
+        if (voterId === true) {
+          console.log("eligible to vote");
+        } else {
+          console.log("need voter id");
+        }
+      } else {
+        console.log("not eligible to vote");
+      }
+      //Check if a number is positive, and inside that check if it is even.
+      let num = -21;
+      if (num > 0) {
+        if (num % 2 === 0) {
+          console.log("even and positive");
+        } else {
+          console.log("positive and odd");
+        }
+      } else {
+        console.log("negative number");
+      }
+      //Check if username is "admin".
+
+      // Inside that, check password is "1234".
+      let username="admin";
+      let password= 1234;
+      if(username==="admin"){
+        if(password===1234){
+            console.log("login successfull")
+        }
+        else{
+            console.log("wrong password")
+        }
+      }else{
+        console.log("invalid username")
+      }
+    </script>
+  </body>
+</html>

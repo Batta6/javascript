@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      let marks = [40, 85, 90, 33, 72, 25, 60, 39];
+      let pass = marks.filter((mark) => mark >= 40);
+      let fail = marks.filter((mark) => mark < 40);
+      console.log("pass marks:" + pass);
+      console.log("fail marks:" + fail);
+
+      let numberlist = [10, 56, 60, 23, 75, 42, 89];
+      let above50 = numberlist.filter((num) => num > 50);
+      let below50 = numberlist.filter((num) => num < 50);
+      console.log("numbers greater than 50:" + above50);
+      console.log("numbers less than 50:" + below50);
+
+      let numbers = [10, 23, 45, 67, 89, 90, 33, 37, 50, 71, 12, 29, 4];
+
+      function isprime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+          if (num % i === 0) return false;
+        }
+        return true;
+      }
+      let primes = numbers.filter(isprime);
+      console.log("prime numbers in the array:" + primes);
+
+      let arr = [10, 20, 30, 40, 50];
+      let firstElement = arr[0];
+      let lastElement = arr[arr.length - 1];
+      arr[0] = lastElement;
+      arr[arr.length - 1] = firstElement;
+      console.log("Array after swapping first and last elements: " + arr);
+
+      let nums = [10, 56, 78, 23, 89, 90, 4];
+      nums.sort((a, b) => b - a);
+      let secondhighest = nums[1];
+      console.log("second highest number in the array:" + secondhighest);
+    </script>
+  </body>
+</html>
