@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UFT-8" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //1.Remove duplicates from the array. ex: [1,2,3,2,4,3,5]
+      let array = [1, 2, 3, 2, 4, 3, 5];
+      console.log("Given Array:", array);
+      let Uniquearray = [...new Set(array)];
+      console.log("array without duplicates:",Uniquearray);
+
+      //2.Find the longest word. Ex: [“apple”, “banana”, “grapes”, “Watermelon”].
+
+      let fruits = ["apple", "banana", "grapes", "watermelon"];
+      console.log("Given Words:", fruits);
+      let largest = "";
+      for (fruit of fruits) {
+        if (fruit.length > largest.length) {
+          largest = fruit;
+        }
+      }
+      console.log("Longest word:", largest);
+
+      //3.Convert string to array. Ex: “JavaScript is fun”.
+      
+     let string = "javascript is fun";
+      console.log("Given string:", string);
+      let arra = string.split(" ");
+      console.log("Array output:", arra);
+    </script>
+  </body>
+</html>
