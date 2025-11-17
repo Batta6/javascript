@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+      <head>
+           <meta charset="UTF-8">
+           <title>Ligth & Dark,Show/Hide,Character-count</title>
+    <style>
+    body{
+        text-align: center;
+    }
+    body.light-mode {
+      background-color: white;
+      color:black;
+    }
+    body.dark-mode {
+      background-color: black;
+      color: white;
+    }
+    .hidden {
+      display: none;
+    }
+    .container {
+      padding: 20px;
+      
+    }
+    button {
+      margin: 10px 0;
+      padding: 15px;
+    }
+  </style>
+</head>
+<body class="light-mode">
+  <div class="container">
+    <!-- Light/Dark Mode Toggle -->
+    <button onclick="darkLigthMode()"><strong>Light / Dark Mode</strong></button><br>
+
+    <!-- Show/Hide Paragraph -->
+    <button onclick="hideShowParagraph()"><strong>Show / Hide Paragraph</strong></button>
+    <p id="textPara">This is a Paragraph That Can be Shown or Hidden by clicking the Above Button.</p><br><br><br>
+
+    <!-- Character Count -->
+    <textarea id="textInput" rows="4" cols="50" placeholder="Type something..."></textarea><br>
+    <button onclick="showCharCount()"><strong>Show Character Count</strong></button>
+    <p id="charCount"></p>
+  </div>
+
+  <script>
+    // Light/Dark Mode Toggle
+    function darkLigthMode() {
+      document.body.classList.toggle('light-mode');
+      document.body.classList.toggle('dark-mode');
+    }
+
+    // Show/Hide Paragraph
+    function hideShowParagraph() {
+      const para = document.getElementById('textPara');
+      para.classList.toggle('hidden');
+    }
+
+    // Character Count
+    function showCharCount() {
+      const text = document.getElementById('textInput').value;
+      document.getElementById('charCount').textContent = Character Count: ${text.length};
+    }
+  </script>
+</body>
+</html>

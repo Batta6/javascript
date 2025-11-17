@@ -9,8 +9,8 @@
       //1.Remove duplicates from the array. ex: [1,2,3,2,4,3,5]
       let array = [1, 2, 3, 2, 4, 3, 5];
       console.log("Given Array:", array);
-      let Uniquearray = [...new Set(array)];
-      console.log("array without duplicates:",Uniquearray);
+      let uniqueArray = [...new Set(array)];
+      console.log("array without duplicates:",uniqueArray);
 
       //2.Find the longest word. Ex: [“apple”, “banana”, “grapes”, “Watermelon”].
 
@@ -28,8 +28,9 @@
       
      let string = "javascript is fun";
       console.log("Given string:", string);
-      let arra = string.split(" ");
-      console.log("Array output:", arra);
+      let arra = [...string.split(" ")];
+
+      console.log(arra);
     </script>
   </body>
 </html>
