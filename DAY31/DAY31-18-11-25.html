@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--Build a small to-do list (add/delete)-->
+    <input id="taskInput" type="text" placeholder="enter items" />
+    <button id="addBtn">add</button>
+    <ul id="taskList"></ul>
+
+    <!--Change the Image on click.-->
+    <h2>Click the image to change it:</h2>
+    <img id="image" src="ntr1.jpg" alt="Image 1" width="300" height="200" /><br><br>
+    <!--Password Show/Hide-->
+    <input id="abc"type="password" placeholder="enter your password">
+    <button id="abc1" >show/hide</button><br><br>
+    <!--Search Filter (input typing -> filter list items)-->
+    <input type="text" placeholder="enter item" id="fill">
+    <ul id="party">
+      <li>TDP</li>
+      <li>BJP</li>
+      <li>JSP</li>
+      <li>CONGRESS</li>
+      <li>YSRCP</li>
+      <li>BRS</li>
+      <li>JANATA DAL</li>
+      <li>AAP</li>
+      <li>BSP</li>
+      <li>DMK</li>
+      <li>ANNA DMK</li>
+      <li>CPI</li>
+    </ul>
+    <!--Make a counter using 2 buttons (+(Increase the value), - (decrease the value))-->
+    <button id="btn1" style="background-color: darkorange; color: black; padding: 10px;">+</button>
+    <button id="btn2" style="background-color: yellow; color: black; padding: 10px;">-</button><br><br>
+    <h1 id="count" style="background-color: aqua; color: black;">counter:&nbsp;</h1>
+    <script>
+      //Build a small to-do list (add/delete)
+      let input = document.querySelector("#taskInput");
+      let addBtn = document.querySelector("#addBtn");
+      let list = document.querySelector("#taskList");
+
+      addBtn.addEventListener("click", () => {
+        let taskText = input.value.trim();
+
+        if (taskText === "") return;
+
+        let li = document.createElement("li");
+        li.textContent = taskText;
+
+        let del = document.createElement("button");
+        del.textContent = "Delete";
+        del.onclick = () => li.remove();
+
+        li.appendChild(del);
+        list.appendChild(li);
+
+        input.value = "";
+      });
+
+      //Change the Image on click.
+      const image = document.getElementById("image");
+      image.addEventListener("click", function () {
+        if (image.src.includes("ntr1.jpg")) {
+          image.src = "ntr2.jpeg";
+        } else {
+          image.src = "ntr1.jpg";
+        }
+      });
+      //Password Show/Hide
+      const password=document.getElementById("abc");
+      const passBtn=document.getElementById("abc1");
+      passBtn.addEventListener("click",()=>{
+        if(password.type==="password"){
+          password.type="text";
+          passBtn.textContent="hide";
+        }
+        else{
+          password.type="password";
+          passBtn.textContent="show"
+        }
+      })
+      //Search Filter (input typing -> filter list items)
+      const partyList=document.getElementById("fill")
+      const politi=document.querySelectorAll("#party li")
+      partyList.addEventListener("keyup",()=>{
+        politi.forEach(li=>{
+          let text = partyList.value.toLowerCase();
+          let itemNa=li.textContent.toLowerCase();
+          if(itemNa.includes(text)){
+            li.style.display='block'
+          }else{
+            li.style.display='none'
+          }
+        })
+      })
+      //Make a counter using 2 buttons (+(Increase the value), - (decrease the value))
+      const disInc=document.getElementById("btn1");
+      const disDec=document.getElementById("btn2");
+      const disCoun=document.getElementById("count");
+      let count=0;
+      disInc.addEventListener("click",()=>{
+        count++;
+        disCoun.textContent="counter:"+count;
+      })
+      disDec.addEventListener("click",()=>{
+        count--;
+        disCoun.textContent="counter:"+count;
+      })
+
+    </script>
+  </body>
+</html>

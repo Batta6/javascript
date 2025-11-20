@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="m1">hello iam manoj</div>
+    <div class="man">iam a former tdp memeber</div>
+    <div class="man">working as a mandal convetnor</div>
+    <div id="title">old text</div>
+    <div class="titl">old text</div>
+    <h1>hello batta</h1>
+    <div class="g2"><p>hello batta</p><h1>hello</h1></div>
+    <div id="g1"><p>hello batta</p><h1>hello</h1></div>
+    <p>a</p>
+    <p>bc</p>
+    <p>ca</p>
+    <p>vcvcv</p>
+    
+    <script>
+        //document.getElementById
+        let item=document.getElementById("m1");
+        item.style.fontSize="50px";
+        //document.getElementsByClassName
+        let item1=document.getElementsByClassName("man");
+        item1[0].style.color="yellow";
+        item1[1].style.background="red";
+        //queryselector by id
+        let t=document.querySelector("#title");
+        t.style.color="blue";
+         //queryselector by class
+        let t1=document.querySelector(".titl")
+        t1.style.fontSize="30px";
+         //queryselector by tagname
+         let t2=document.querySelector("h1");
+         t2.style.color="blue";
+          //queryselector in container side by classname
+          let g0=document.querySelector(".g2 p")
+          g0.style.color="grey";
+          let g12=document.querySelector(".g2 h1")
+          g12.style.background="yellow";
+          //queryselector in container side by id
+          let g122=document.querySelector("#g1 p")
+          g122.style.background="orange";
+          let g123=document.querySelector("#g1 h1")
+          g123.style.color="yellow"
+//queryselector all
+let allP=document.querySelectorAll("p")
+allP.style.color="red";
+
+
+        
+
+    </script>
+</body>
+</html>

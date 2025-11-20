@@ -11,8 +11,6 @@
       text-align: center;
       padding: 40px;
     }
-
-    /* Dark Mode */
     .dark {
       background: black;
       color: darkorange;
@@ -26,11 +24,11 @@
   </style>
   <body>
     <button id="colorbtn">Light / Dark Mode</button>
-    <h1>Hello World</h1>
+    <h1>Hello OPPTY Team</h1>
 
     <button onclick="togglePara()">Show / Hide</button>
 
-    <p id="myPara">
+    <p id="para1">
       Hi,Iam Batta Manoj Chowdary,i'm working as a web developer in OPPTY TECH
       HUB Private limited HYD
     </p>
@@ -52,7 +50,7 @@
 
       //Show / Hide Paragraph
       function togglePara() {
-        let para = document.getElementById("myPara");
+        let para = document.getElementById("para1");
 
         if (para.style.display === "none") {
           para.style.display = "block";
