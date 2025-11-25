@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 33 tasks</title>
+    <style>
+      body{
+    background-color: black;  
+    text-align: center;
+     }
+
+#size{
+    position: absolute;
+    font-size: 20px;
+    color:white;
+    padding-left: 520px;
+ }    
+
+.buttons{
+    margin-top: 140px;
+}    
+#inc{
+    background-color: darkorange;
+    color: black;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 5px;
+}
+#dec{
+    background-color: darkorange;
+    color: black;
+    font-size: 16px;
+    padding: 15px 30px;
+    border-radius: 5px;
+}     
+    </style>
+</head>
+<body>
+    <!-- Task:
+1.	Increase and decrease the font Size. Take p element and 2 buttons.
+2.	QR Code Generator – Here Input value to generate the QA Code.
+3.	Live Search Filter – We will have input with list of items.
+4.	Accordion FAQ (Toggle Panels)
+-->
+
+<h1>Increase and decrease the font Size:</h1><br><br>
+
+<p id="size">MANOJ KUMAR NAIDU</p>
+
+<div class="buttons">
+<button id="inc"><strong>Increase + </strong></button>&nbsp;&nbsp;&nbsp;
+<button id="dec"><strong>Decrease - </strong></button>
+</div>
+
+  <script>
+
+ //1.Increase and decrease the font Size,Take p element and 2 buttons.
+
+    let size = 20;
+    const text = document.getElementById("size");
+
+    document.getElementById("inc").addEventListener("click",function(){
+        size ++;
+     updateCounterDisplay();
+    });
+
+    document.getElementById("dec").addEventListener("click",function(){
+        size--;
+        updateCounterDisplay();
+    });
+
+    function updateCounterDisplay() {
+                text.style.fontSize = size + "px";
+                document.getElementById("value").textContent = size;
+            }
+  </script>
+ </body>
+</html>

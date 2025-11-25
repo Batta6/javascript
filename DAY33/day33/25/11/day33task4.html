@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accordion FAQ</title>
+    <style>
+        body{
+            background-color: black;
+        }
+        h2{
+            text-align: center;
+        }
+        .accordion{
+            background-color:darkorange;
+            cursor: pointer;
+            padding: 10px;
+            width: 1350px;
+            border: none;
+            text-align: left;
+            outline: none;
+            font-size: 20px;
+            transition: background-color 0.3s;
+        }
+        .accordion.active, .accordion:hover{
+            background-color: #ccc;
+        }
+        .panel{
+            padding: 0 20px;
+            display: none;
+            background-color: white;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    
+    <h2>Accordion FAQ</h2>
+
+    <button class="accordion">HTML</button>
+    <div class="panel">
+        <p>Hyper Text Mark Up language.</p>
+    </div>
+    
+    <button class="accordion">CSS</button>
+    <div class="panel">
+        <p>Castcading Style Sheets.</p>
+    </div>
+
+    <button class="accordion">JS</button>
+    <div class="panel">
+        <p>Java Script.</p>
+    </div>
+
+    <script>
+    //4.Accordion FAQ (Toggle Panels).
+
+    const accordions = document.querySelectorAll('.accordion');
+      accordions.forEach(acc =>{
+      acc.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+      });
+    });
+    </script>
+</body>
+</html>
