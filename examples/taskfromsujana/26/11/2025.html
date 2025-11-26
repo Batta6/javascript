@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        #page{
+            background-color: black;
+        }
+        #text{
+            text-align: center;
+            font-size: 50px;
+            word-spacing: 2px;
+            color: darkorange;
+        }
+        button{
+            padding: 20px 30px;
+            background-color: rgb(141, 176, 141);
+            border-radius: 10px;
+            font-size: 20px;
+            font-weight: 700;
+            margin-left: 150px;
+            margin-top: 50px;
+        }
+    </style>
+  </head>
+  <body id="page">
+    <p id="text">"Tap on the button to see emotion"</p>
+    <button onclick="emoji('happy')">Happy</button>
+    <button onclick="emoji('sad')">Sad</button>
+    <button onclick="emoji('angry')">Angry</button>
+    <button onclick="emoji('sleep')">Sleepy</button>
+
+    <script>
+      function emoji(type) {
+        const page = document.getElementById("page");
+        const msg = document.getElementById("text");
+
+        if (type === "happy") {
+          page.style.background = "yellow";
+          msg.textContent = "I am feeling Great! 😊";
+        } else if (type === "sad") {
+          page.style.background = "blue";
+          msg.textContent = "I am feeling down today. 😢";
+        } else if (type === "angry") {
+          page.style.background = "red";
+          msg.textContent = "I am frustrated! 😡";
+        } else if (type === "sleep") {
+          page.style.background = "purple";
+          msg.textContent = "I need a nap. 😴";
+        }
+      }
+    </script>
+  </body>
+</html>
