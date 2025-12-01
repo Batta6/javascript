@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Login/Logout</title>
+  </head>
+  <style>
+    body{
+        background-color: black;
+    }
+    h2{
+        color: blueviolet;
+        font-size: 30px;
+        text-align: center;
+    }
+    #warning{
+        color: rgb(255, 153, 0);
+        font-size: 20px;
+        display: none;
+        text-align: center;
+        margin-top: 20px;
+    }
+  </style>
+  <body>
+    <h2>Auto Logout Demo</h2>
+    <p id="warning">You will be logged out in 2 seconds</p>
+
+    <script>
+      setTimeout(() => {
+        document.getElementById("warning").style.display = "block";
+      }, 5000);
+
+      setTimeout(() => {
+        alert("You are logged out!");
+      }, 7000);
+    </script>
+  </body>
+</html>

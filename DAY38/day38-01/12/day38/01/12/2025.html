@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Simple Traffic Signal</title>
+
+<style>
+  .box {
+    width: 80px;
+    padding: 10px;
+    background: black;
+    border-radius: 10px;
+    margin: auto;
+  }
+
+  .lightred{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background:darkred;
+    margin: 10px auto;
+  }
+  .lightgreen{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background:darkgreen;
+    margin: 10px auto;
+  }
+  .lightyellow{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background:rgb(65, 35, 12);
+    margin: 10px auto;
+  }
+</style>
+
+</head>
+<body>
+
+<h2 style="text-align:center;">Traffic Signal</h2>
+
+<div class="box">
+  <div id="red" class="lightred"></div>
+  <div id="yellow" class="lightyellow"></div>
+  <div id="green" class="lightgreen"></div>
+</div>
+
+<script>
+function showRed() {
+  document.getElementById("red").style.background = "red";
+  document.getElementById("yellow").style.background = "rgb(65, 35, 12)";
+  document.getElementById("green").style.background = "darkgreen";
+  setTimeout(showGreen, 5000);
+}
+
+function showGreen() {
+  document.getElementById("red").style.background = "darkred";
+  document.getElementById("yellow").style.background = "rgb(65, 35, 12)";
+  document.getElementById("green").style.background = "lime";
+  setTimeout(showYellow, 3000);
+}
+
+function showYellow() {
+  document.getElementById("red").style.background = "darkred";
+  document.getElementById("yellow").style.background = "yellow";
+  document.getElementById("green").style.background = "darkgreen";
+  setTimeout(showRed, 1000);
+}
+
+showRed();
+</script>
+
+</body>
+</html>
+ 

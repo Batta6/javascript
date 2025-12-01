@@ -1,0 +1,67 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR code</title>
+    
+    </head>
+    <body>
+        <h1>QR Code Generator Upload image</h1>
+        <div id="qrcode"></div>
+        <input type="file" id="file" accept="image/*">
+        <button onclick="makeQR()">Generate QR Code</button>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+
+        <script>
+            function makeQR(){
+                document.getElementById("qrcode").innerHTML = "";
+                const fileInput = document.getElementById("file");
+                const files = fileInput.files[0];
+                new QRCode (document.getElementById("qrcode"), {
+                    text: URL.createObjectURL(files),
+                    width: 256,
+                    height: 256,
+                });
+            }
+        </script>
+            
+    </body> 
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day 37</title>
+    
+    </head>
+    <body>
+        <h1>QR Code Generator for text</h1>
+        <div id="qrcode"></div>
+        <input type="text" id="code" placeholder="enter your text">
+        <button onclick="makeQR()">Generate QR Code</button>
+
+
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.js"></script>
+
+        <script>
+            function makeQR() {
+            document.getElementById("qrcode").innerHTML = "";
+            const text = document.getElementById("code").value;
+
+            new QRCode(document.getElementById("qrcode"), {
+                text: text,
+                width: 256,
+                height: 256,
+            });
+        }
+        </script>
+            
+    </body> 
+</html>
