@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Day-39 JS Advance topics practices</title>
+</head>
+<body>
+    <h1>Open your browser console to see the output</h1>
+    <script>
+    
+    //1. Template Literals.
+
+    const name = "batta";
+    const greeting = Hello, ${name}! Welcome to ES6.;
+    console.log(greeting);              
+
+    //2. Arrow Function.
+
+     const add = (a, b) => a + b;
+     console.log(add(3,13));          
+
+
+    // 3. Default Parameters.
+
+      function greet(name = "Guest") {
+      console.log(Hello, ${name}!);
+     }
+         greet();                         
+         greet("MANOJ");                 
+         
+    
+    //4. Spread Operator.
+
+      const numbers = [1, 2, 3];
+      const moreNumbers = [...numbers, 4, 5];
+      console.log(moreNumbers);          
+    //5. Destructuring Assignment.
+     
+      const person = { name: "Mango", age: 22 };
+      const { Name, age } = person;
+      console.log(name);                      
+      console.log(age);                       
+  
+
+    //6. Classes
+     
+      class Animal {
+      constructor(name) {
+      this.name = name;
+     }
+       speak() {
+         console.log(${this.name} makes a sound.);
+     }
+   }
+
+    const dog = new Animal("Dog");
+    dog.speak();                       
+
+
+
+    //7. for...of Loop.
+
+     const fruits = ["apple", "banana", "cherry"];
+       for (const fruit of fruits) {
+        console.log(fruit);              
+    }
+
+     </script>
+</body>
+</html>
