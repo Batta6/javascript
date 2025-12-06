@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syntax Institute of Technology</title>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* =========================================
+           1. CSS VARIABLES & RESET
+           ========================================= */
+        :root {
+            --primary: #4f46e5;       /* Indigo 600 */
+            --primary-dark: #4338ca;  /* Indigo 700 */
+            --secondary: #eef2ff;     /* Indigo 50 */
+            --text-main: #1f2937;     /* Gray 800 */
+            --text-muted: #6b7280;    /* Gray 500 */
+            --bg-body: #f9fafb;       /* Gray 50 */
+            --bg-card: #ffffff;
+            --border: #e5e7eb;
+            --success: #10b981;
+            --danger: #ef4444;
+            --warning: #f59e0b;
+            --radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Dark Mode Variables */
+        body.dark-mode {
+            --primary: #6366f1;
+            --primary-dark: #818cf8;
+            --secondary: #312e81;
+            --text-main: #f9fafb;
+            --text-muted: #9ca3af;
+            --bg-body: #111827;
+            --bg-card: #1f2937;
+            --border: #374151;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.5;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+
+        /* =========================================
+           2. LAYOUT & UTILITIES
+           ========================================= */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section { padding: 60px 0; }
+        
+        .hidden { display: none !important; }
+        
+        .flex { display: flex; align-items: center; }
+        .flex-between { justify-content: space-between; }
+        .flex-center { justify-content: center; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .grid-4 { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+
+        .text-center { text-align: center; }
+        .mb-4 { margin-bottom: 1rem; }
+        .mt-4 { margin-top: 1rem; }
+
+        /* =========================================
+           3. COMPONENTS
+           ========================================= */
+        
+        /* Navigation */
+        nav {
+            background: var(--bg-card);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+        .nav-links a { margin-left: 2rem; font-weight: 500; }
+        .nav-links a:hover { color: var(--primary); }
+        .logo { font-size: 1.25rem; font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 0.5rem; }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: 0.2s;
+        }
+        .btn-primary { background: var(--primary); color: white; }
+        .btn-primary:hover { background: var(--primary-dark); }
+        .btn-outline { border: 1px solid var(--border); background: var(--bg-card); color: var(--text-main); }
+        .btn-icon { background: none; border: none; cursor: pointer; color: var(--text-main); padding: 5px; }
+        
+        /* Filter Buttons (Active State) */
+        .filter-btn { background: var(--border); color: var(--text-muted); padding: 0.5rem 1.2rem; border-radius: 50px; cursor: pointer; border: none; }
+        .filter-btn.active { background: var(--primary); color: white; }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 1.5rem;
+            transition: transform 0.2s;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .card:hover { transform: translateY(-4px); }
+        
+        /* Inputs & Forms */
+        input, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            background: var(--bg-card);
+            color: var(--text-main);
+            margin-bottom: 1rem;
+        }
+        .error-msg { color: var(--danger); font-size: 0.85rem; margin-top: -0.5rem; margin-bottom: 1rem; display: block;}
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+        }
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; line-height: 1.2; }
+        .hero p { font-size: 1.25rem; opacity: 0.9; max-width: 600px; margin: 0 auto 2rem; }
+        .hero .btn { background: white; color: var(--primary); }
+        .hero .btn:hover { background: #f0f0f0; }
+
+        /* Quiz Specifics */
+        .quiz-box { background: #312e81; color: white; padding: 2rem; border-radius: var(--radius); }
+        .option-btn { 
+            width: 100%; text-align: left; padding: 1rem; margin-bottom: 0.5rem; 
+            background: rgba(255,255,255,0.1); border: 2px solid transparent; 
+            color: white; border-radius: var(--radius); cursor: pointer;
+        }
+        .option-btn:hover { background: rgba(255,255,255,0.2); }
+        .option-btn.correct { background: var(--success); border-color: var(--success); }
+        .option-btn.wrong { background: var(--danger); border-color: var(--danger); }
+        .text-success { color: var(--success); font-weight: bold; }
+        .text-danger { color: var(--danger); font-weight: bold; }
+
+        /* Footer / Developer Log */
+        footer { background: #000; color: #fff; padding: 2rem 0; margin-top: auto; }
+        #dev-console {
+            background: #111;
+            border: 1px solid #333;
+            color: #4ade80; /* Terminal Green */
+            font-family: monospace;
+            padding: 1rem;
+            height: 150px;
+            overflow-y: auto;
+            border-radius: var(--radius);
+            font-size: 0.85rem;
+        }
+
+        /* Animations */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .fade-in { animation: fadeIn 0.4s ease forwards; }
+
+        /* Mobile Menu */
+        .mobile-menu { display: none; padding: 1rem; background: var(--bg-card); border-bottom: 1px solid var(--border); }
+        .mobile-menu a{ display: block; padding: 0.5rem 0; }
+        
+        
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .md-hidden { display: block; }
+            .grid-3, .grid-4 { grid-template-columns: 1fr; } 
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="container flex flex-between">
+            <div class="logo">
+                <i data-lucide="graduation-cap"></i>
+                <span>Syntax Institute</span>
+            </div>
+            <div class="nav-links flex">
+                <a href="#courses">Courses</a>
+                <a href="#faculty">Faculty</a>
+                <a href="#quiz">Quiz</a>
+                <a href="#tools">Tools</a>
+                <button id="theme-toggle" class="btn-icon" style="margin-left: 20px;">
+                    <i data-lucide="moon"></i>
+                </button>
+            </div>
+            <button id="mobile-menu-btn" class="btn-icon md-hidden">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="#courses">Courses</a>
+            <a href="#faculty">Faculty</a>
+            <a href="#quiz">Quiz</a>
+            <a href="#tools">Tools</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>Master the Code<br><span style="opacity:0.8; font-size:0.8em;">Build the Future</span></h1>
+            <p>Join the world's leading institute for web development. We use JavaScript not just to teach, but to build this very site.</p>
+            <a href="#courses" class="btn">View Courses</a>
+        </div>
+    </header>
+
+    <!-- Courses Section -->
+    <section id="courses" class="section">
+        <div class="container">
+            <div class="text-center mb-4">
+                <h2 style="font-size: 2rem; margin-bottom: 0.5rem;">Course Catalog</h2>
+                <p style="color: var(--text-muted);">Filtered dynamically using JavaScript Conditionals.</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-center" style="gap: 10px; margin-bottom: 2rem;">
+                <button onclick="filterCourses('all')" class="filter-btn active">All</button>
+                <button onclick="filterCourses('Frontend')" class="filter-btn">Frontend</button>
+                <button onclick="filterCourses('Backend')" class="filter-btn">Backend</button>
+            </div>
+
+            <!-- Grid -->
+            <div id="course-grid" class="grid-3">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Faculty Section -->
+    <section id="faculty" class="section" style="background: var(--secondary);">
+        <div class="container">
+            <h2 class="mb-4 text-center">Meet Our Faculty</h2>
+            <div id="faculty-list" class="grid-4">
+                <!-- Injected via JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Quiz Section -->
+    <section id="quiz" class="section" style="background: #1e1b4b;">
+        <div class="container">
+            <div class="text-center mb-4" style="color: white;">
+                <h2>Logic Quiz</h2>
+                <p style="opacity: 0.8;">Demonstrating Arrays, Loops, and Conditionals.</p>
+            </div>
+            
+            <div class="container" style="max-width: 800px;">
+                <div id="quiz-container" class="quiz-box">
+                    <!-- Quiz Injected Here -->
+                </div>
+                <div class="text-center mt-4">
+                    <button onclick="renderQuiz()" class="btn btn-primary">Load New Question</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tools Section -->
+    <section id="tools" class="section">
+        <div class="container">
+            <h2 class="text-center mb-4">Student Developer Tools</h2>
+            
+            <div class="grid-3">
+                
+                <!-- Tool 1: GPA -->
+                <div class="card">
+                    <div>
+                        <h3 class="mb-4">1. GPA Estimator</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Demonstrates If/Else Logic</p>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px;">
+                            <input type="number" id="grade1" placeholder="Sub 1">
+                            <input type="number" id="grade2" placeholder="Sub 2">
+                            <input type="number" id="grade3" placeholder="Sub 3">
+                        </div>
+                    </div>
+                    <div>
+                        <button onclick="calculateGPA()" class="btn btn-primary" style="width: 100%;">Calculate</button>
+                        <div id="gpa-result" class="hidden text-center mt-4" style="padding: 10px; border-radius: 4px; border: 1px solid var(--border);"></div>
+                    </div>
+                </div>
+
+                <!-- Tool 2: Multiplication Table -->
+                <div class="card">
+                    <div>
+                        <h3 class="mb-4">2. Table Generator</h3>
+                        <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 1rem;">Demonstrates For Loops</p>
+                        <div class="flex" style="gap: 10px;">
+                            <input type="number" id="table-num" placeholder="Num (e.g. 5)" style="margin-bottom: 0;">
+                            <button onclick="generateTable()" class="btn btn-primary">Go</button>
+                        </div>
+                    </div>
+                    <div id="table-output" style="margin-top: 1rem; height: 150px; overflow-y: auto; background: var(--bg-body); padding: 10px; border: 1px solid var(--border); font-family: monospace;">
+                        <p style="color: var(--text-muted);">Table will appear here...</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Admissions Form -->
+    <section id="admissions" class="section" style="background: var(--bg-body);">
+        <div class="container" style="max-width: 600px;">
+            <div class="text-center mb-4">
+                <h2>Apply Now</h2>
+                <p>Join the next cohort.</p>
+            </div>
+            
+            <form id="application-form" class="card">
+                <div>
+                    <label>Full Name</label>
+                    <input type="text" id="app-name">
+                    <span id="error-name" class="error-msg hidden">Name is required.</span>
+                </div>
+                <div>
+                    <label>Email Address</label>
+                    <input type="email" id="app-email">
+                    <span id="error-email" class="error-msg hidden">Please enter a valid email.</span>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Submit Application</button>
+            </form>
+
+            <div id="success-msg" class="hidden text-center" style="background: #dcfce7; color: #166534; padding: 1rem; border-radius: var(--radius); margin-top: 1rem;">
+                Application Received! We will contact you shortly.
+            </div>
+        </div>
+    </section>
+
+    <!-- Notice Board -->
+    <section style="background: #1f2937; color: white; padding: 1rem 0;">
+        <div class="container">
+            <div class="flex flex-between mb-4">
+                <h3>Live Notices (DOM)</h3>
+                <button id="add-notice-btn" class="btn" style="padding: 5px 10px; font-size: 0.8rem;">Add Notice</button>
+            </div>
+            <ul id="notice-list" style="display: flex; flex-direction: column; gap: 10px;">
+                <li class="notice-item" style="background: #374151; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between;">
+                    <span>Welcome to the new semester!</span>
+                    <button class="delete-btn" style="color: #fca5a5; background: none; border: none; cursor: pointer;">Dismiss</button>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container grid-3" style="grid-template-columns: 1fr 1fr;">
+            <div>
+                <h3 class="mb-4">Syntax Institute</h3>
+                <p style="opacity: 0.7;">© 2024. Pure HTML/CSS/JS.</p>
+            </div>
+            <div>
+                <h4 style="color: #4ade80; font-family: monospace; margin-bottom: 0.5rem;">> Developer Log</h4>
+                <div id="dev-console">
+                    <div>> System initialized...</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript Implementation -->
+    <script>
+        // ==========================================
+        // 1. DATA
+        // ==========================================
+        const courses = [
+            { id: 1, title: "Intro to Algorithms", category: "Backend", desc: "Learn sorting, searching, and Big O.", icon: "binary", students: 120 },
+            { id: 2, title: "Modern UI/UX Design", category: "Frontend", desc: "Master layout and responsive design.", icon: "layout", students: 85 },
+            { id: 3, title: "Database Management", category: "Backend", desc: "SQL, NoSQL, and architecture.", icon: "database", students: 95 },
+            { id: 4, title: "React & CSS", category: "Frontend", desc: "Build modern SPAs efficiently.", icon: "code", students: 200 },
+            { id: 5, title: "Cloud Computing", category: "Backend", desc: "Deploying scalable apps.", icon: "cloud", students: 60 }
+        ];
+
+        const faculty = ["Dr. Alan Turing", "Prof. Ada Lovelace", "Dr. Grace Hopper", "Prof. Tim Berners-Lee"];
+
+        const quizQuestions = [
+            { question: "Which array method adds an item to the END?", options: ["push()", "pop()", "shift()", "unshift()"], answer: 0 },
+            { question: "How do you start a FOR loop?", options: ["for (i <= 5; i++)", "for (let i = 0; i <= 5; i++)", "for i = 1 to 5", "loop(5)"], answer: 1 },
+            { question: "Result of '5' + 3?", options: ["8", "53", "Error", "undefined"], answer: 1 }
+        ];
+
+        function logToConsole(message) {
+            const consoleDiv = document.getElementById('dev-console');
+            const newLog = document.createElement('div');
+            const time = new Date().toLocaleTimeString();
+            newLog.textContent = `> [${time}] ${message}`;
+            consoleDiv.prepend(newLog); 
+        }
+
+        // ==========================================
+        // 2. RENDERING (LOOPS + DOM)
+        // ==========================================
+
+        function renderCourses(filterCategory = 'all') {
+            const grid = document.getElementById('course-grid');
+            grid.innerHTML = ''; 
+            logToConsole(`Rendering courses: ${filterCategory}`);
+
+            courses.forEach(course => {
+                if (filterCategory === 'all' || course.category === filterCategory) {
+                    const card = document.createElement('div');
+                    card.className = 'card fade-in';
+                    // Replaced Tailwind classes with plain semantic CSS classes
+                    card.innerHTML = `
+                        <div>
+                            <p style="color: var(--primary); font-weight: bold; font-size: 0.85rem;">${course.category}</p>
+                            <div style="margin-top: 10px;">
+                                <div class="flex" style="gap: 10px; margin-bottom: 5px;">
+                                    <i data-lucide="${course.icon}"></i>
+                                    <h3 style="font-size: 1.1rem;">${course.title}</h3>
+                                </div>
+                                <p style="color: var(--text-muted);">${course.desc}</p>
+                            </div>
+                        </div>
+                        <div style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                            <span>${course.students} Students Enrolled</span>
+                        </div>
+                    `;
+                    grid.appendChild(card);
+                }
+            });
+            lucide.createIcons();
+        }
+
+        function renderFaculty() {
+            const list = document.getElementById('faculty-list');
+            for (let i = 0; i < faculty.length; i++) {
+                const div = document.createElement('div');
+                div.className = "card text-center";
+                div.style.borderTop = "4px solid var(--primary)";
+                div.innerHTML = `
+                    <div style="width: 60px; height: 60px; background: var(--secondary); border-radius: 50%; margin: 0 auto 1rem; display: flex; align-items: center; justify-content: center;">
+                        <span style="font-size: 1.5rem; font-weight: bold; color: var(--primary);">${faculty[i].charAt(0)}</span>
+                    </div>
+                    <h3>${faculty[i]}</h3>
+                    <p style="color: var(--text-muted);">Senior Lecturer</p>
+                `;
+                list.appendChild(div);
+            }
+        }
+
+        // ==========================================
+        // 3. QUIZ
+        // ==========================================
+        function renderQuiz() {
+            const container = document.getElementById('quiz-container');
+            const qIndex = Math.floor(Math.random() * quizQuestions.length);
+            const qData = quizQuestions[qIndex];
+
+            let html = `<h3 style="margin-bottom: 1rem;">Q: ${qData.question}</h3><div class="grid-4" style="grid-template-columns: 1fr 1fr;">`;
+
+            qData.options.forEach((opt, index) => {
+                html += `<button onclick="checkAnswer(this, ${index}, ${qData.answer})" class="option-btn">${opt}</button>`;
+            });
+
+            html += `</div><p id="quiz-feedback" style="margin-top: 1rem; min-height: 24px; font-weight: bold;"></p>`;
+            container.innerHTML = html;
+        }
+
+        function checkAnswer(btn, selectedIndex, correctIndex) {
+            const buttons = document.querySelectorAll('.option-btn');
+            buttons.forEach(b => b.disabled = true);
+            const feedback = document.getElementById('quiz-feedback');
+
+            if (selectedIndex === correctIndex) {
+                btn.classList.add('correct');
+                feedback.textContent = "Correct! Great job.";
+                feedback.className = "text-success fade-in";
+            } else {
+                btn.classList.add('wrong');
+                buttons[correctIndex].classList.add('correct');
+                feedback.textContent = "Wrong! Correct answer highlighted.";
+                feedback.className = "text-danger fade-in";
+            }
+        }
+
+        // ==========================================
+        // 4. LOGIC
+        // ==========================================
+        function generateTable() {
+            const num = parseInt(document.getElementById('table-num').value);
+            const output = document.getElementById('table-output');
+            
+            if (isNaN(num)) return;
+
+            output.innerHTML = "";
+            for (let i = 1; i <= 10; i++) {
+                const row = document.createElement('div');
+                const product = num * i;
+                row.style.padding = "4px 0";
+                row.style.borderBottom = "1px solid #eee";
+                row.style.display = "flex";
+                row.style.justifyContent = "space-between";
+                row.innerHTML = `<span>${num} x ${i}</span> <span>= ${product}</span>`;
+                output.appendChild(row);
+            }
+        }
+
+        function filterCourses(category) {
+            // Logic refactored to use standard class manipulation
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                // If the text matches OR we clicked All (and button text is All)
+                if(btn.innerText === category || (category === 'all' && btn.innerText === 'All')) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+            renderCourses(category);
+        }
+
+        function calculateGPA() {
+            const g1 = parseFloat(document.getElementById('grade1').value) || 0;
+            const g2 = parseFloat(document.getElementById('grade2').value) || 0;
+            const g3 = parseFloat(document.getElementById('grade3').value) || 0;
+            const avg = (g1 + g2 + g3) / 3;
+            const resultBox = document.getElementById('gpa-result');
+            
+            let message = "", color = "";
+            if (avg >= 90) { message = `Grade A (${avg.toFixed(1)})`; color = "var(--success)"; }
+            else if (avg >= 75) { message = `Grade B (${avg.toFixed(1)})`; color = "#3b82f6"; }
+            else if (avg >= 50) { message = `Grade C (${avg.toFixed(1)})`; color = "var(--warning)"; }
+            else { message = `Fail (${avg.toFixed(1)})`; color = "var(--danger)"; }
+
+            resultBox.style.color = color;
+            resultBox.style.borderColor = color;
+            resultBox.textContent = message;
+            resultBox.classList.remove('hidden');
+            resultBox.classList.add('fade-in');
+        }
+
+        // Form Validation
+        document.getElementById('application-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const name = document.getElementById('app-name');
+            const email = document.getElementById('app-email');
+            let isValid = true;
+
+            if (!name.value.trim()) { document.getElementById('error-name').classList.remove('hidden'); isValid = false; }
+            else document.getElementById('error-name').classList.add('hidden');
+
+            if (!email.value.includes('@')) { document.getElementById('error-email').classList.remove('hidden'); isValid = false; }
+            else document.getElementById('error-email').classList.add('hidden');
+
+            if (isValid) {
+                this.classList.add('hidden');
+                document.getElementById('success-msg').classList.remove('hidden');
+            }
+        });
+
+        // Toggle Theme
+        document.getElementById('theme-toggle').addEventListener('click', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+
+        // Mobile Menu
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const menu = document.getElementById('mobile-menu');
+            menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+        });
+
+        // Notice Board (Add/Remove)
+        const notices = ["Library closed Sunday.", "Hackathon Friday.", "Guest lecture tomorrow."];
+        document.getElementById('add-notice-btn').addEventListener('click', () => {
+            const list = document.getElementById('notice-list');
+            const txt = notices[Math.floor(Math.random() * notices.length)];
+            const li = document.createElement('li');
+            li.className = "notice-item fade-in";
+            li.style.cssText = "background: #374151; padding: 10px; border-radius: 4px; display: flex; justify-content: space-between;";
+            li.innerHTML = `<span>${txt}</span><button class="delete-btn" style="color: #fca5a5; background: none; border: none; cursor: pointer;">Dismiss</button>`;
+            list.appendChild(li);
+        });
+
+        document.getElementById('notice-list').addEventListener('click', function(e) {
+            if(e.target.classList.contains('delete-btn')) {
+                e.target.parentElement.remove();
+            }
+        });
+
+        // Initialize
+        window.addEventListener('load', () => {
+            renderCourses();
+            renderFaculty();
+            renderQuiz();
+            lucide.createIcons();
+            logToConsole("Website Loaded (No Tailwind)");
+        });
+    </script>
+</body>
+</html>
