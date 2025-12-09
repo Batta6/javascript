@@ -1,9 +1,6 @@
 body{
     font-family: Verdana,Tahoma, sans-serif;
 }
-.bg{
-    background-color: #470477;
-}
 header{
     display: flex;
     background-color: #470477;
@@ -49,8 +46,9 @@ li{
     padding: 0px 30px;    
 }
 #main{
-    margin-top: 150px;
+    margin-top: -41px;
     background-color: #470477;
+    padding-top: 130px;
     
 }
 .main1{
@@ -177,8 +175,14 @@ td {
 
 .p-2{
     padding: 40px;
-    line-height: 2.0;
+    line-height: 1.5;
     text-align: left;
+}
+.p-2 h2{
+    font-size: 20px;
+}
+.p-2 p{
+    font-size: 15px;
 }
 .platform-col p{
     text-align: left;
