@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="download.png" type="image/png" />
+    <title>Employee Registration</title>
+
+    <style>
+      body {
+        background: linear-gradient(to left, #3498db, #2c3e50);
+        color: white;
+        font-family: Arial;
+      }
+      .dark-mode {
+        background: black;
+      }
+      h1 {
+        text-align: center;
+      }
+      .form-container {
+        width: 350px;
+        margin: auto;
+        background: rgba(255,255,255,0.1);
+        padding: 20px;
+        border-radius: 15px;
+        margin-top: 20px;
+      }
+      .input {
+        background-color: #2c3e50;
+        margin-left: 10%;
+        padding:10px 40px 10px 70px;
+        color: white;
+        border-radius: 50px;
+        margin-top: 15px;
+      }
+      .btn1 {
+        color: #2c3e50;
+        background-color: #99a3ad;
+        border-radius: 50px;
+        padding: 5px;
+        font-size: 18px;
+        margin-left: 35%;
+        margin-top: 10px;
+      }
+      /* TABLE */
+      table {
+        margin: 30px auto;
+        width: 80%;
+        border-collapse: collapse;
+        background: rgba(255,255,255,0.2);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+      th, td {
+        padding: 12px;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+      }
+      th {
+        background: #34495e;
+      }
+      .dark-mode th {
+        background: #222;
+      }
+      /* BUTTONS */
+      .delBtn img{
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        width: 24px;
+      }
+      .editBtn img {
+        border-radius: 10px;
+        border: none;
+        cursor: pointer;
+        width: 24px;
+      }
+      .delBtn {
+        border:none;
+        border-radius: 50px;
+        background-color:rgba(255, 255, 255, 0.377);
+      }
+      .editBtn {
+        border: none;
+        border-radius: 50px;
+        background-color: rgba(255, 255, 255, 0.37);
+      }
+      .dark-mode .delBtn {
+        background:#585858 ;
+      }
+      .dark-mode .editBtn {
+        background:#5c5b5b ;
+      }
+      /* DARK MODE TOGGLE */
+      .btn {
+        margin-left: 27%;
+        margin-top: -55px;
+        position: absolute;
+      }
+      .btn img{
+        margin-top: 5px;
+      }
+      .btn button {
+        color:white;
+        background: linear-gradient(to left, #3498db, #2c3e50);
+        border-radius: 50px;
+      }
+      h2{
+        color: #222;
+      }
+      .dark-mode h2{
+        color: whitesmoke;
+      }
+    </style>
+  </head>
+
+  <body>
+    <h1>OPPTY Employee Registration</h1>
+
+    <div class="btn">
+      <button onclick="myFunction()">
+        <img src="night-mode.png" class="img1" style="width:20px;height:20px;">
+      </button>
+    </div>
+
+    <div class="form-container">
+      <form id="empForm">
+        <h2 style="text-align:center;">Employee Details</h2>
+
+        <input id="taskInput" class="input" type="text" placeholder="Employee Name" />
+        <input id="taskInput1" class="input" type="email" placeholder="Employee Email" />
+        <input id="taskInput2" class="input" type="text" placeholder="Employee Contact No." />
+        <input id="taskInput3" class="input" type="text" placeholder="Employee Age" /><br><br>
+
+        <button id="addBtn" class="btn1">Register</button>
+      </form>
+    </div>
+
+    <!-- TABLE -->
+    <table id="empTable">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Contact</th>
+          <th>Age</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+  function myFunction() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  let input = document.querySelector("#taskInput");
+  let input1 = document.querySelector("#taskInput1");
+  let input2 = document.querySelector("#taskInput2");
+  let input3 = document.querySelector("#taskInput3");
+  let addBtn = document.querySelector("#addBtn");
+  let tableBody = document.querySelector("#empTable tbody");
+
+  addBtn.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    let name = input.value.trim();
+    let email = input1.value.trim();
+    let contact = input2.value.trim();
+    let age = input3.value.trim();
+
+    if (name === "" || email === "" || contact === "" || age === "") {
+      alert("Please fill all inputs");
+      return;
+    }
+
+    let row = document.createElement("tr");
+
+    row.innerHTML =
+      "<td>" + name + "</td>" +
+      "<td>" + email + "</td>" +
+      "<td>" + contact + "</td>" +
+      "<td>" + age + "</td>" +
+      "<td>" +
+        "<button class='editBtn'><img src=pencil.png></button> " +
+        "<button class='delBtn'><img src=delete.png></button>" +
+      "</td>";
+
+    tableBody.appendChild(row);
+
+    /* DELETE */
+    row.querySelector(".delBtn").onclick = function () {
+      row.remove();
+    };
+
+    /* EDIT */
+    row.querySelector(".editBtn").onclick = function () {
+      input.value = name;
+      input1.value = email;
+      input2.value = contact;
+      input3.value = age;
+      row.remove();
+    };
+
+    input.value = "";
+    input1.value = "";
+    input2.value = "";
+    input3.value = "";
+  });
+</script>
+
+  </body>
+</html>
