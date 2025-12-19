@@ -43,7 +43,6 @@
         margin-left: 35%;
         margin-top: 10px;
       }
-      /* TABLE */
       table {
         margin: 30px auto;
         width: 80%;
@@ -63,7 +62,6 @@
       .dark-mode th {
         background: #222;
       }
-      /* BUTTONS */
       .delBtn img{
         border-radius: 10px;
         border: none;
@@ -92,7 +90,6 @@
       .dark-mode .editBtn {
         background:#5c5b5b ;
       }
-      /* DARK MODE TOGGLE */
       .btn {
         margin-left: 27%;
         margin-top: -55px;
@@ -136,8 +133,6 @@
         <button id="addBtn" class="btn1">Register</button>
       </form>
     </div>
-
-    <!-- TABLE -->
     <table id="empTable">
       <thead>
         <tr>
@@ -189,12 +184,12 @@
 
     tableBody.appendChild(row);
 
-    /* DELETE */
+    
     row.querySelector(".delBtn").onclick = function () {
       row.remove();
     };
 
-    /* EDIT */
+    
     row.querySelector(".editBtn").onclick = function () {
       input.value = name;
       input1.value = email;

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" placeholder="enter your name " id="name">
+    <button onclick="submitForm">manoj</button><br><br>
+    <label for="text">item1</label><br>
+    <input type="text" id="inp1" placeholder="price"><br><br>
+    <label for="text">item2</label><br>
+    <input type="text" id="inp2" placeholder="price"><br><br>
+    <label for="text">item3</label><br>
+    <input type="text" id="inp3" placeholder="price"><br><br>
+    <label for="text">item4</label><br>
+    <input type="text" id="inp4" placeholder="price"><br><br>
+    <button onclick = "totalPrice">total</button>
+    <script>
+      //Fucntions
+      function greet() {
+        console.log("manoj how are you");
+      }
+      greet();
+      greet();
+
+      //Functions with parameters
+      function he(name) {
+        console.log("hi" + " " + name);
+      }
+      he("batta");
+      he("indu");
+      he("lalli");
+      he("adi");
+      he("aswi");
+
+      //default parameters
+      function great(name = "batta") {
+        console.log("hello" + name);
+      }
+      great();
+      great("manoj");
+
+      //call back function
+      function greets(name, callback) {
+        console.log("Hello " + name);
+        callback();
+      }
+
+      greets("Manoj", function () {
+        console.log("Welcome!");
+      });
+      // anonymous function
+      setTimeout(function () {
+        console.log("This runs after 2 seconds");
+      }, 2000);
+      //function scope
+      function test() {
+        let x = 10;
+        console.log(x);
+      }
+
+      test();
+      // console.log(x); ❌ error
+      function submitForm() {
+        let name = document.getElementById("name").value;
+        alert("Submitted by " + name);
+      }
+      // check a number is even or odd by using functions
+      function even(num=3){
+        if (num%2==0){
+            console.log("even")
+        }
+        else{
+            console.log("odd")
+        }
+      }even()
+      //calculating total [price] using functions
+      let p1=document.getElementById("inp1").value;
+      let p2=document.getElementById("inp2").value;
+      let p3=document.getElementById("inp3").value;
+      let p4=document.getElementById("inp4").value;
+      function totalPrice(){
+        let total=p1+p2+p3+p4
+      }
+
+    </script>
+  </body>
+</html>

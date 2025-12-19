@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <label>item1</label><br>
+  <input type="text" id="inp1" placeholder="price"><br><br>
+
+  <label>item2</label><br>
+  <input type="text" id="inp2" placeholder="price"><br><br>
+
+  <label>item3</label><br>
+  <input type="text" id="inp3" placeholder="price"><br><br>
+
+  <label>item4</label><br>
+  <input type="text" id="inp4" placeholder="price"><br><br>
+
+  <button onclick="totalPrice()" id="res">Total</button>
+
+  <p id="result"></p> <!-- Display result here -->
+
+  <script>
+    function totalPrice() {
+      let p1 = Number(document.getElementById("inp1").value);
+      let p2 = Number(document.getElementById("inp2").value);
+      let p3 = Number(document.getElementById("inp3").value);
+      let p4 = Number(document.getElementById("inp4").value);
+
+      let total = p1 + p2 + p3 + p4;
+      console.log(total); // shows in console
+      document.getElementById("res").innerText = "Total Price: " + total; // shows on page
+    }
+    // arrow function for square of a number
+    let square=n=>n*n
+    console.log(square(5))
+    //constructor function
+   function Employee(name,id){
+    this.name=name;
+    this.id=id;
+   }let em1=new Employee("manoj",22)
+   let em2=new Employee("indu",22)
+   console.log(em1)
+   console.log(em1)
+   console.log(em2)
+
+   //constructor with methods
+   function Person(name, age) {
+  this.name = name;
+  this.age = age;
+
+  this.greet = function () {
+    console.log("Hello, my name is " + this.name);
+  };
+}
+
+let p1 = new Person("Manoj", 22);
+console.log(p1)
+let p2= new Person("indu",22)
+p2.greet();
+
+
+  </script>
+</body>
+</html>
