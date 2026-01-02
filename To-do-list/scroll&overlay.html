@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Overlay Fixed Example</title>
+
+  <style>
+    body {
+      font-family: Arial;
+      height: 2000px; /* just for scroll demo */
+    }
+
+    /* OVERLAY */
+    .overlay {
+      position: fixed;      /* KEY POINT */
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* CONTENT BOX */
+    .popup {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      width: 300px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Scroll the page</h2>
+
+  <!-- Overlay -->
+  <div class="overlay">
+    <div class="popup">
+      <h3>Hello 👋</h3>
+      <p>This is overlay with fixed</p>
+    </div>
+  </div>
+
+</body>
+</html>

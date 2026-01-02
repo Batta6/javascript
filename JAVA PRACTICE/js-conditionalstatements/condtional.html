@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="num">
+<button onclick="check()">Check</button>
+<p id="result"></p>
+
+<script>
+// function check() {
+//   let n = document.getElementById("num").value;
+  
+
+//   if(n%2==0){
+//     let r=document.getElementById("result").textContent="even";
+//   }
+//   else{
+//     r=document.getElementById("result").textContent="odd"
+//   }
+// }
+
+
+
+//If age < 18 → "Not Eligible"
+
+//If age ≥ 18 → "Eligible"
+
+// function check(){
+//     let age=document.getElementById("num").value;
+//     if(age>=18){
+//         document.getElementById("result").innerText="Eligible to vote"
+//     }
+//     else{
+//         document.getElementById("result").innerText="not eligible to vote"
+//     }
+// }
+
+
+//Number Sign Checker
+function check(){
+let n=Number(document.getElementById("num").value)
+if(n==0){
+    document.getElementById("result").innerText="zero"
+
+}
+else if(n>0){
+    document.getElementById("result").innerText="positive"
+}
+else{
+    document.getElementById("result").innerText="negative"
+}
+
+}
+</script>
+
+</body>
+</html>

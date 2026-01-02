@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="number" id="inp" />
+    <input type="number" id="inp2" />
+    <button onclick="table()">get tables</button>
+    <div id="res">tables</div>
+    <script>
+      //tables
+      // function table(){
+      //     let n=Number(document.getElementById("inp").value)
+      //     let res=document.getElementById("res")
+      //         res.innerHTML=""
+      //     for(let i=1; i<=10; i++){
+      //         res.innerHTML+=n+"X"+i+"="+n*i+"<br> "}
+      //     }
+      //sum of numbers
+    //   function table() {
+    //     let n = Number(document.getElementById("inp").value);
+    //     let m = Number(document.getElementById("inp2").value);
+    //     let sum = 0;
+    //     if (n > m) {
+    //       document.getElementById("res").innerText =
+    //         "Start number must be smaller";
+    //       return;
+    //     }
+    //     for (let i = n; i <= m; i++) {
+    //       sum = sum + i;
+    //       document.getElementById("res").innerText = sum;
+    //     }
+        
+    //   }
+//     let i = 1;
+
+// while (i <= 5) {
+//   console.log(i);
+//   i++;
+// }
+let n = 123;
+let sum = 0;
+
+while (n > 0) {
+  sum += n % 10;
+  n = Math.floor(n / 10);
+}
+
+console.log(sum); // 6
+
+    </script>
+  </body>
+</html>

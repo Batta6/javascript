@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+.loader {
+  width: 100px;
+  height: 100px;
+  border: 10px solid #ccc;
+  border-bottom: 10px solid blue;
+  border-radius: 50%;
+  background-color: black;
+  animation: spin 5s infinite linear;
+}
+
+@keyframes spin {
+  to { transform: rotate(160deg); }
+}
+.btn {
+  padding: 15px 40px;
+  font-size: 18px;
+  border: none;
+  background: #6c5ce7;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn:hover {
+  animation: pulse 0.6s;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+.text {
+  font-size: 40px;
+  animation: slideFade 2s infinite forwards ;
+}
+
+@keyframes slideFade {
+  from {
+    opacity: 0;
+    transform: scalex(1.1);
+  }
+  to {
+    opacity: 1;
+    transform: scaley(1);
+  }
+}
+.card {
+  width: 250px;
+  padding: 20px;
+  background: #f1f1f1;
+  transition: 0.3s;
+}
+
+.card:hover {
+  animation: lift 0.5s forwards;
+}
+
+@keyframes lift {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(-15px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  }
+}
+.progress {
+  width: 300px;
+  height: 20px;
+  background: #ddd;
+}
+
+.bar {
+  height: 100%;
+  width: 0;
+  background: green;
+  animation: load 3s forwards;
+}
+
+@keyframes load {
+  to {
+    width: 100%;
+  }
+}
+.input {
+  padding: 10px;
+  animation: shake 0.4s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+* {
+  box-sizing: border-box;
+}
+
+.card {
+  position: relative;
+  width: 300px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 10px;
+  cursor: pointer;
+  animation: shake 0.5s infinite;
+}
+
+/* Image */
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: 0.5s ease;
+}
+
+/* Content box */
+.card .content {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: scale(0.7);
+  transition: 0.5s ease;
+}
+
+/* Hover effects */
+.card:hover img {
+  transform: scale(0.5);
+}
+
+.card:hover .content {
+  opacity: 1;
+  transform: scale(1);
+}
+
+</style>
+<body>
+    <div class="loader"></div>
+    <button class="btn">Hover Me</button>
+    <h1 class="text">Welcome</h1>
+    <div class="card">
+  <h3>Card Title</h3>
+  <p>Hover effect animation</p>
+</div>
+<div class="progress">
+  <div class="bar"></div>
+</div>
+<input type="text" class="input" placeholder="Wrong input">
+
+<div class="card">
+  <img src="oppty.png" alt="image">
+  <div class="content">
+    <h3>Card Title</h3>
+    <p>This content appears on hover</p>
+  </div>
+</div>
+
+
+</body>
+</html>
