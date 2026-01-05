@@ -53,9 +53,11 @@
         <section class="section-3">
           <h4>Auto-Updating Timer</h4>
           <p class="para1">This counter auto-updates every second</p>
-          <div class="time">Time elapsed: <span id="timer">00:00:00</span></div>
-          <button class="btn3" onclick="pauseTimer()">Pause Timer</button>
-          <button class="btn3" onclick="resetTimer()">Reset Timer</button>
+          <div class="time">
+            Time elapsed:<span id="timerLeft">00:00:00</span>
+          </div>
+          <button class="btn3" onclick="pauseTimer(this)">Pause Timer</button>
+          <button class="btn3" onclick="resetTimer(this)">Reset Timer</button> 
         </section>
         <section class="section-4">
           <h4>Feat Hessions & Videos</h4>
@@ -72,9 +74,11 @@
         <section class="section-6">
           <h4>Auto-Updating Timer</h4>
           <p class="para1">This counter auto-updates every second</p>
-          <div class="time">Time elapsed: <span id="timer">00:00:00</span></div>
-          <button class="btn3" onclick="pauseTimer()">Pause Timer</button>
-          <button class="btn3" onclick="resetTimer()">Reset Timer</button>
+          <div class="time">
+            Time elapsed: <span id="timerRight">00:00:00</span>
+          </div>
+          <button class="btn3" onclick="pauseTimer(this)">Pause Timer</button>
+          <button class="btn3" onclick="resetTimer(this)">Reset Timer</button>
         </section>
         <section>
           <h4>Contact Form</h4>
@@ -128,10 +132,10 @@
         © 2026 <strong>Interactive web project</strong> | Your email:<a
           href="mailto:example@gmail.com"
           >example@gmail.com</a
-        ><br /><br>
+        ><br /><br />
         <a href="#">Privacy Policy</a> | <a href="#">Terms of service</a>
       </p>
     </footer>
     <script src="script.js"></script>
-  </body> 
+  </body>
 </html>

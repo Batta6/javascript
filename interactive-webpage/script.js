@@ -1,15 +1,27 @@
-// to-do-list
+/***********************
+ TO-DO LIST
+************************/
 let tasks = [];
 
-// Load from localStorage
-window.onload = function () {
+// Load everything safely
+window.addEventListener("load", () => {
+  // Load tasks
   const savedTasks = localStorage.getItem("tasks");
   if (savedTasks) {
     tasks = JSON.parse(savedTasks);
     renderTasks();
   }
   toggleClearButton();
-};
+
+  // Load form data
+  const savedForm = JSON.parse(localStorage.getItem("formData"));
+  if (savedForm) {
+    name.value = savedForm.name || "";
+    email.value = savedForm.email || "";
+    password.value = savedForm.password || "";
+    message.value = savedForm.message || "";
+  }
+});
 
 function addTask() {
   const input = document.getElementById("taskInput");
@@ -51,11 +63,9 @@ function renderTasks() {
     li.className = "task-item";
 
     li.innerHTML = `
-          <span class="task-text">${task}</span>
-          <button class="remove-btn" onclick="removeTask(${index})">
-            Remove
-          </button>
-        `;
+      <span class="task-text">${task}</span>
+      <button class="remove-btn" onclick="removeTask(${index})">Remove</button>
+    `;
 
     list.appendChild(li);
   });
@@ -65,11 +75,15 @@ function toggleClearButton() {
   document.getElementById("clearBtn").style.display =
     tasks.length > 0 ? "block" : "none";
 }
-//counter
+
+/***********************
+ TIMER (FIXED)
+************************/
 let seconds = 0;
 let isRunning = true;
 
-const timerEl = document.getElementById("timer");
+const timerLeft = document.getElementById("timerLeft");
+const timerRight = document.getElementById("timerRight");
 
 function formatTime(sec) {
   const hrs = String(Math.floor(sec / 3600)).padStart(2, "0");
@@ -78,63 +92,63 @@ function formatTime(sec) {
   return `${hrs}:${mins}:${secs}`;
 }
 
-function updateTimer() {
+setInterval(() => {
   if (isRunning) {
     seconds++;
-    timerEl.textContent = formatTime(seconds);
+    const time = formatTime(seconds);
+    timerLeft.textContent = time;
+    timerRight.textContent = time;
   }
-}
+}, 1000);
 
-setInterval(updateTimer, 1000);
-
-function pauseTimer() {
+function pauseTimer(btn) {
   isRunning = !isRunning;
-  event.target.textContent = isRunning ? "Pause Timer" : "Resume Timer";
+  btn.textContent = isRunning ? "Pause Timer" : "Resume Timer";
 }
 
-function resetTimer() {
+function resetTimer(btn) {
   seconds = 0;
-  timerEl.textContent = "00:00:00";
+  const time = "00:00:00";
+  timerLeft.textContent = time;
+  timerRight.textContent = time;
   isRunning = true;
-  document.querySelector("button").textContent = "Pause Timer";
+  btn.textContent = "Pause Timer";
 }
 
-
-// maps
+/***********************
+ GOOGLE MAP
+************************/
 function openMap() {
-  const address = "108/43 Vijaya Lakshmi Enclave 1st Floor H No 2 PJR Enclave Rd Gangaram ICRISAT Colony Hyderabad Telangana 500050";
+  const address =
+    "108/43 Vijaya Lakshmi Enclave 1st Floor H No 2 PJR Enclave Rd Gangaram ICRISAT Colony Hyderabad Telangana 500050";
+
   const mapURL =
     "https://www.google.com/maps/search/?api=1&query=" +
     encodeURIComponent(address);
-  window.open(mapURL, "_blank"); 
+
+  window.open(mapURL, "_blank");
 }
 
-//forms
- const form = document.getElementById("contactForm");
-    window.onload = () => {
-      const saved = JSON.parse(localStorage.getItem("formData"));
-      if (saved) {
-        document.getElementById("name").value = saved.name || "";
-        document.getElementById("email").value = saved.email || "";
-        document.getElementById("password").value = saved.password || "";
-        document.getElementById("message").value = saved.message || "";
-      }
-    };
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
+/***********************
+ CONTACT FORM
+************************/
+const form = document.getElementById("contactForm");
 
-      const data = {
-        name: name.value,
-        email: email.value,
-        password: password.value,
-        message: message.value
-      };
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
-      localStorage.setItem("formData", JSON.stringify(data));
-      alert("Form submitted!");
-    });
+  const data = {
+    name: name.value,
+    email: email.value,
+    password: password.value,
+    message: message.value
+  };
 
-    function clearForm() {
-      form.reset();
-      localStorage.removeItem("formData");
-    }
+  localStorage.setItem("formData", JSON.stringify(data));
+  alert("Form submitted successfully!");
+});
+
+function clearForm() {
+  form.reset();
+  localStorage.removeItem("formData");
+}
